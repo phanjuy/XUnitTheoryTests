@@ -66,6 +66,17 @@ namespace XUnitTheoryTests
             Assert.Equal(expected, result);
         }
 
+        [Theory]
+        [MemberData(nameof(Data), MemberType = typeof(CalculatorData))]
+        public void CanAddTheoryMemberDataPropertyOnOtherClass(int value1, int value2, int expected)
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Add(value1, value2);
+
+            Assert.Equal(expected, result);
+        }
+
         public static IEnumerable<object[]> GetData(int numTests)
         {
             var allData = new List<object[]>
