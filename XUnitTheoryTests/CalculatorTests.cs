@@ -77,6 +77,39 @@ namespace XUnitTheoryTests
             Assert.Equal(expected, result);
         }
 
+        [Theory]
+        [JsonFileData("all_data.json")]
+        public void CanAddTheoryJsonFile(int value1, int value2, int expected)
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Add(value1, value2);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [JsonFileData("data.json", "AddData")]
+        public void CanAddTheoryJsonFileFromProperty(int value1, int value2, int expected)
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Add(value1, value2);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [JsonFileData("data.json", "SubtractData")]
+        public void CanSubtractTheoryJsonFileFromProperty(int value1, int value2, int expected)
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Subtract(value1, value2);
+
+            Assert.Equal(expected, result);
+        }
+
         public static IEnumerable<object[]> GetData(int numTests)
         {
             var allData = new List<object[]>
