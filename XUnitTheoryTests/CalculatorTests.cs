@@ -30,5 +30,16 @@ namespace XUnitTheoryTests
 
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [ClassData(typeof(CalculatorTestData))]
+        public void CanAddTheoryClassData(int value1, int value2, int expected)
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Add(value1, value2);
+
+            Assert.Equal(expected, result);
+        }
     }
 }
